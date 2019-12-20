@@ -7,7 +7,7 @@ For personal use only.
 
 ## Usage
 
-Invoke via `curl -sL https://vm-init.custodio.org | sh`
+Invoke via `curl -sL https://vm-init.custodio.org | bash`
 
 
 ## License
