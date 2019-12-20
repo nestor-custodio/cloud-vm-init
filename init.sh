@@ -120,7 +120,7 @@ section "Setting up Ruby + Rails + Heroku ..."
 		sudo apt -y install libpq-dev  # We can't build the 'pg' gem without this.
 
 
-	heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
+	/snap/bin/heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
 
 
 
