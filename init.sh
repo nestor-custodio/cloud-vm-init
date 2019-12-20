@@ -27,6 +27,7 @@ section "Installing packages ..."
 	                      \
 	    apt-file          \
 	    curl              \
+	    figlet            \
 	    git               \
 	    make              \
 	    shellcheck        \
