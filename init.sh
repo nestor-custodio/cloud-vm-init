@@ -110,17 +110,10 @@ section "Setting up Ruby + Rails + Heroku ..."
 		rm -rf ~/ri-installer*
 
 
-	puts "\nBuilding latest ruby binaries ...\n"
-		zsh -ic 'ruby-install --latest ruby'
+	puts "\nPrepping for Ruby / Rails work ...\n"
 		puts "ruby" > ~/.ruby-version
-
-
-	puts "\nSetting up Rails gem ...\n"
-		zsh -ic 'gem install rails'
 		sudo apt -y install libpq-dev  # We can't build the 'pg' gem without this.
-
-
-	/snap/bin/heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
+		/snap/bin/heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
 
 
 
