@@ -15,7 +15,8 @@ puts() { printf "%s\n" "$1"; }
 
 section "Installing packages ..."
 
-	sudo snap install --classic aws-cli heroku
+	sudo snap install --classic aws-cli
+	sudo snap install --classic heroku
 
 	sudo apt udpate
 	sudo apt -y install   \
