@@ -7,8 +7,9 @@ sudo true
 pushd ~
 
 
-section() { printf "\n\n\n%s\n" "$1"; }
-puts() { printf "%s\n" "$1"; }
+puts() { printf "%b\n" "$1"; }
+divider() { printf "%${COLUMNS}s" | tr ' ' '-'; }
+section() { printf "\n\n"; divider; printf "%s\n" "$1"; }
 
 
 
