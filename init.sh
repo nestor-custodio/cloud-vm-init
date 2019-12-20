@@ -20,28 +20,28 @@ section "Installing packages ..."
 	sudo snap install --classic google-cloud-sdk
 	sudo snap install --classic heroku
 
-	sudo apt update
-	sudo apt -y install   \
-	                      \
-	    zsh               \
-	    tmux              \
-	    byobu             \
-	                      \
-	    apt-file          \
-	    curl              \
-	    figlet            \
-	    git               \
-	    make              \
-	    shellcheck        \
-	    tree              \
-	    wget              \
-	                      \
-	    mysql-client      \
-	    postgresql-client \
-	    redis-tools       \
+	sudo apt-get update
+	sudo apt-get -y install \
+	                        \
+	    zsh                 \
+	    tmux                \
+	    byobu               \
+	                        \
+	    apt-file            \
+	    curl                \
+	    figlet              \
+	    git                 \
+	    make                \
+	    shellcheck          \
+	    tree                \
+	    wget                \
+	                        \
+	    mysql-client        \
+	    postgresql-client   \
+	    redis-tools         \
 	    sqlite
 
-	sudo apt -y install -f  # Resolve possible dependency issues.
+	sudo apt-get -qy install -f  # Resolve possible dependency issues.
 
 
 
@@ -113,7 +113,7 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 	puts "\nPrepping for Ruby / Rails work ...\n"
 		puts "ruby" > ~/.ruby-version
-		sudo apt -y install libpq-dev  # We can't build the 'pg' gem without this.
+		sudo apt-get -y install libpq-dev  # We can't build the 'pg' gem without this.
 		/snap/bin/heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
 
 
@@ -121,8 +121,8 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 section "Cleaning apt caches ..."
 
-	sudo apt -y autoremove
-	sudo apt -y autoclean
+	sudo apt-get -y autoremove
+	sudo apt-get -y autoclean
 
 
 
