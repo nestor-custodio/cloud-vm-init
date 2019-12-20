@@ -20,7 +20,7 @@ section "Installing packages ..."
 	sudo snap install --classic google-cloud-sdk
 	sudo snap install --classic heroku
 
-	sudo apt udpate
+	sudo apt update
 	sudo apt -y install   \
 	                      \
 	    zsh               \
