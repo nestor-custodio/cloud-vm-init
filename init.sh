@@ -48,7 +48,8 @@ section "Installing packages ..."
 
 section "Loading the apt-file database ..."
 
-	sudo apt-file update > /dev/null
+	# No need to wait on this, so we'll nohup it.
+	sudo nohup apt-file update > /dev/null 2>&1 &
 
 
 
