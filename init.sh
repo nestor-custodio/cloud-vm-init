@@ -1,10 +1,13 @@
 #! /bin/bash
-# shellcheck disable=1117,2164
+# shellcheck disable=1117
 
 
 # Ensure we have sudo credentials handy.
 sudo true
-pushd ~
+
+
+original_dir="$( pwd )"
+cd ~ || exit
 
 
 puts() { printf "%b\n" "$1"; }
@@ -75,7 +78,7 @@ section "Setting user shell ..."
 section "Setting up nvm (nodejs) ..."
 
 	git clone https://github.com/creationix/nvm.git ~/.nvm
-	cd ~/.nvm
+	cd ~/.nvm || exit
 	git checkout "$( git describe --abbrev=0 --tags )"
 	puts "source ~/.nvm/nvm.sh" >> ~/.zshrc
 
@@ -89,13 +92,13 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 	# chruby v0.3.9 -- https://github.com/postmodern/chruby
 	puts "\nInstalling: chruby ...\n"
-		cd ~
+		cd ~ || exit
 		wget -q -O chruby-installer.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
 		tar -xzvf chruby-installer.tar.gz > /dev/null && mv ./chruby-0.3.9 ./chruby-installer
-		cd ~/chruby-installer
+		cd ~/chruby-installer || exit
 		sudo make install > /dev/null
 		sudo ./scripts/setup.sh
-		cd ~
+		cd ~ || exit
 		rm -rf ~/chruby-installer*
 		puts "source /usr/local/share/chruby/chruby.sh" >> ~/.zshrc
 		puts "source /usr/local/share/chruby/auto.sh"   >> ~/.zshrc
@@ -103,12 +106,12 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 	# ruby-install v0.7.0 -- https://github.com/postmodern/ruby-install
 	puts "\nInstalling: ruby-install ...\n"
-		cd ~
+		cd ~ || exit
 		wget -q -O ri-installer.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
 		tar -xzvf ri-installer.tar.gz > /dev/null && mv ./ruby-install-0.7.0 ./ri-installer
-		cd ~/ri-installer
+		cd ~/ri-installer || exit
 		sudo make install > /dev/null
-		cd ~
+		cd ~ || exit
 		rm -rf ~/ri-installer*
 
 
@@ -128,5 +131,4 @@ section "Cleaning apt caches ..."
 
 
 
-puts "DONE"
-popd
+cd "$original_dir" || exit
