@@ -22,6 +22,8 @@ section "Installing packages ..."
 	sudo snap install --classic aws-cli
 	sudo snap install --classic google-cloud-sdk
 	sudo snap install --classic heroku
+	sudo snap install           jq
+	sudo snap install           yq
 
 	sudo apt-get -qq update
 	sudo apt-get -qqy install \
