@@ -99,4 +99,23 @@ section "Setting up cross-instance config sync ..."
 
 
 
+section "Finalizing setup ..."
+
+	# Notify of init completion ...
+	read -r -d '' notification <<-EOF
+		Hostname: $( hostname )
+		External: $( vm-ip )
+		Disk Use: $( df -h / --output=pcent,size,avail                           \
+		             | sed -r -e '1 d'                                           \
+		                      -e 's| +|:|g'                                      \
+		                      -e 's|^:?(.*):(.*):(.*)$|\1 of \2 (\3 Available)|' )
+
+		Ready In: $( uptime --pretty | cut --bytes '4-' )
+		SSH Link: ssh://nestor@$( vm-ip )/
+	EOF
+	notify gcp "VM Ready: $( hostname )" "$notification"
+
+
+
+
 cd "$original_dir" || exit
