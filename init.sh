@@ -3,6 +3,10 @@
 
 
 sync_root="${HOME}/sync"
+init_flag_file="/usr/local/vm-init.complete"
+
+# Bail as early as possible if we've already run init.
+[ -f "$init_flag_file" ] && exit 0
 
 
 
@@ -100,6 +104,9 @@ section "Setting up cross-instance config sync ..."
 
 
 section "Finalizing setup ..."
+
+	# We need a way to determine that init ran to completion ...
+	echo "complete" | sudo tee "$init_flag_file" > /dev/null
 
 	# Notify of init completion ...
 	read -r -d '' notification <<-EOF
