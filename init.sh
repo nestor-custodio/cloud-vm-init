@@ -23,28 +23,28 @@ section "Installing packages ..."
 	sudo snap install --classic google-cloud-sdk
 	sudo snap install --classic heroku
 
-	sudo apt-get update
-	sudo apt-get -y install \
-	                        \
-	    zsh                 \
-	    tmux                \
-	    byobu               \
-	                        \
-	    apt-file            \
-	    curl                \
-	    figlet              \
-	    git                 \
-	    make                \
-	    shellcheck          \
-	    tree                \
-	    wget                \
-	                        \
-	    mysql-client        \
-	    postgresql-client   \
-	    redis-tools         \
+	sudo apt-get -qq update
+	sudo apt-get -qqy install \
+	                          \
+	    zsh                   \
+	    tmux                  \
+	    byobu                 \
+	                          \
+	    apt-file              \
+	    curl                  \
+	    figlet                \
+	    git                   \
+	    make                  \
+	    shellcheck            \
+	    tree                  \
+	    wget                  \
+	                          \
+	    mysql-client          \
+	    postgresql-client     \
+	    redis-tools           \
 	    sqlite
 
-	sudo apt-get -qy install -f  # Resolve possible dependency issues.
+	sudo apt-get -qqy install -f  # Resolve possible dependency issues.
 
 
 
@@ -77,9 +77,9 @@ section "Setting user shell ..."
 
 section "Setting up nvm (nodejs) ..."
 
-	git clone https://github.com/creationix/nvm.git ~/.nvm
+	git clone -q https://github.com/creationix/nvm.git ~/.nvm
 	cd ~/.nvm || exit
-	git checkout "$( git describe --abbrev=0 --tags )"
+	git checkout -q "$( git describe --abbrev=0 --tags )"
 	puts "source ~/.nvm/nvm.sh" >> ~/.zshrc
 
 	zsh -ic 'nvm install stable'
@@ -117,7 +117,7 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 	puts "\nPrepping for Ruby / Rails work ...\n"
 		puts "ruby" > ~/.ruby-version
-		sudo apt-get -y install libpq-dev  # We can't build the 'pg' gem without this.
+		sudo apt-get -qqy install libpq-dev  # We can't build the 'pg' gem without this.
 		/snap/bin/heroku plugins:install heroku-accounts  # Simple juggling of Heroku credentials.
 
 
@@ -125,8 +125,8 @@ section "Setting up Ruby + Rails + Heroku ..."
 
 section "Cleaning apt caches ..."
 
-	sudo apt-get -y autoremove
-	sudo apt-get -y autoclean
+	sudo apt-get -qy autoremove  # Note we're purposefully not fully quieting the autoremove.
+	sudo apt-get -qqy autoclean
 
 
 
