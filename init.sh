@@ -2,6 +2,11 @@
 # shellcheck disable=1117
 
 
+sync_root="${HOME}/sync"
+
+
+
+
 # Ensure we have sudo credentials handy.
 sudo true
 
@@ -81,6 +86,15 @@ section "Cleaning apt caches ..."
 
 	sudo apt-get -qy autoremove  # Note we're purposefully not fully quieting the autoremove.
 	sudo apt-get -qqy autoclean
+
+
+
+
+section "Setting up cross-instance config sync ..."
+
+	mkdir -p "$sync_root"
+	gsutil -m cp -P -r 'gs://vm-sync/*' "$sync_root" > /dev/null
+	"${sync_root}/vm-sync" "$sync_root"
 
 
 
