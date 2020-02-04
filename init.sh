@@ -19,32 +19,24 @@ section() { printf "\n\n"; divider; printf "%s\n" "$1"; }
 
 section "Installing packages ..."
 
-	sudo snap install --classic aws-cli
-	sudo snap install --classic google-cloud-sdk
-	sudo snap install --classic heroku
-	sudo snap install           jq
-	sudo snap install           yq
+	sudo snap install --classic aws-cli          2> /dev/null
+	sudo snap install --classic google-cloud-sdk 2> /dev/null
+	sudo snap install --classic heroku           2> /dev/null
+	sudo snap install           jq               2> /dev/null
+	sudo snap install           yq               2> /dev/null
 
 	sudo apt-get -qq update
-	sudo apt-get -qqy install \
-	                          \
-	    zsh                   \
-	    tmux                  \
-	    byobu                 \
-	                          \
-	    apt-file              \
-	    curl                  \
-	    figlet                \
-	    git                   \
-	    make                  \
-	    shellcheck            \
-	    tree                  \
-	    wget                  \
-	                          \
-	    mysql-client          \
-	    postgresql-client     \
-	    redis-tools           \
-	    sqlite
+	sudo apt-get -qqy install apt-file   \
+	                          byobu      \
+	                          curl       \
+	                          figlet     \
+	                          gcc        \
+	                          git        \
+	                          make       \
+	                          qrencode   \
+	                          shellcheck \
+	                          tree       \
+	                          wget
 
 	sudo apt-get -qqy install -f  # Resolve possible dependency issues.
 
