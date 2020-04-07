@@ -62,6 +62,9 @@ section "Loading the apt-file database ..."
 
 section "Configuring system behaviours ..."
 
+	# Set timezone ...
+	sudo timedatectl set-timezone "America/Chicago"
+
 	# Set sudo password appearance ...
 	puts "Defaults pwfeedback" | sudo tee -a /etc/sudoers > /dev/null
 
