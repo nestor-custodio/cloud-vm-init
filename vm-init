@@ -32,6 +32,7 @@ section "Installing packages ..."
 	sudo snap install --classic google-cloud-sdk 2> /dev/null
 	sudo snap install --classic heroku           2> /dev/null
 	sudo snap install           jq               2> /dev/null
+	sudo snap install           shellcheck       2> /dev/null
 	sudo snap install           yq               2> /dev/null
 
 	sudo apt-get -qq update
@@ -43,7 +44,6 @@ section "Installing packages ..."
 	                          git        \
 	                          make       \
 	                          qrencode   \
-	                          shellcheck \
 	                          tree       \
 	                          wget
 
