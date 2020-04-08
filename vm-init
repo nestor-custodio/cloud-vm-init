@@ -74,13 +74,6 @@ section "Configuring system behaviours ..."
 
 
 
-section "Setting user shell ..."
-
-	sudo chsh -s /bin/zsh "$( whoami )"
-
-
-
-
 section "Prepping for Ruby / Rails work ..."
 
 	sudo apt-get -qqy install libpq-dev  # We can't build the 'pg' gem without this.
